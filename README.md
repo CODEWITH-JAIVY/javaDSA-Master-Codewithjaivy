@@ -94,4 +94,4 @@ javaDSA-fang-preparation-master/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/CODEWITH-JAIVY/javaDSA-fang-preparation-master.git
+[ git push -u origin main](https://github.com/CODEWITH-JAIVY/javaDSA-Master-Codewithjaivy.git)
