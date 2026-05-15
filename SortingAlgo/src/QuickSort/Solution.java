@@ -1,45 +1,46 @@
 package QuickSort;
 
 public class Solution {
-    private static void Swap( int arr [] , int start , int end ) {
+    public static void quickSort(int []arr,int  start , int end  ) {
+        if(start >=end  ) {
+            return  ;
+        }
+        int pivot  = partition(arr , start , end  ) ;
+        quickSort(arr , start , pivot-1  ) ;
+        quickSort(arr , pivot+1 , end  ) ;
+    }
+    public static int partition(int arr[] , int start , int end ) {
+        int randomIndex = start + (int)(Math.random() * (end - start + 1));
+
+        swap(arr, randomIndex, end);
+        int pivot = arr[end];
+        int pi  = start  ;
+        for(int i = start  ; i< end  ; i++ ) {
+            if(arr[i] <  pivot ) {
+                swap(arr , i , pi ) ;
+                pi++ ;
+            }
+        }
+        swap(arr , pi , end ) ;
+        return pi  ;
+    }
+    public static void swap(int arr[] , int start , int end ) {
         int temp = arr[start] ;
-        arr[start] = arr[end] ;
+        arr[start ] = arr[end ] ;
         arr[end] = temp  ;
     }
-  public static int Partition(int [] arr , int start  , int end ) {
-  int pivot = arr[end];
-      // we can chose the last ,  first   , and the  ( medain   of the tree mid of the start and end , or start , end
-      int i = start-1  ;
-
-      for( int j = start ; j < end  ; j++  ) {
-          if( arr[j] < pivot) {
-              i++ ;
-              Swap (  arr , i , j ) ;
-          }
-      }
-      Swap( arr , i+1  , end) ;
-      return i+1 ;
-
-  }
-
-    public static void quickSortHelper( int []arr , int start  , int end ) {
-        if(start< end) {
-            int pivot  = Partition( arr ,  start , end) ;
-            quickSortHelper(arr , start , pivot-1);
-            quickSortHelper(arr , pivot+1  , end );
-        }
-    }
-
-
-    public static void quickSort(int []arr)  {
-      quickSortHelper(arr ,  0 , arr.length-1);
+    public static  int[] sortArray(int[] nums) {
+        int start  = 0  ;
+        int end  = nums.length -1  ;
+        quickSort(nums , start , end  ) ;
+        return nums ;
     }
 
     public static void main(String[] args) {
         int [] arr ={1,0,2,3,5,6,8,9,4} ;
-        quickSort(arr) ;
 
-        for( int val  : arr ) {
+         int [] ans  = sortArray(arr) ;
+        for( int val  : ans ) {
             System.out.print(val + " ");
         }
     }
