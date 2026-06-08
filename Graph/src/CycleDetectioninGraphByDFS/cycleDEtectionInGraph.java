@@ -1,9 +1,9 @@
-package CycleDetectioninGraphByBFS;
+package CycleDetectioninGraphByDFS;
 
 import java.util.ArrayList;
 
 public class cycleDEtectionInGraph {
-    public static boolean bfs (ArrayList<ArrayList<Integer>> Graph,
+    public static boolean dfs (ArrayList<ArrayList<Integer>> Graph,
                                 boolean[] visited,
                                 int start,
                                 boolean[] recursion) {
@@ -14,7 +14,7 @@ public class cycleDEtectionInGraph {
         for( int neighbor : Graph.get(start)) {
             if  ( ! visited[neighbor]) {
                 recursion[neighbor] = true ;
-                if(bfs (Graph , visited  , neighbor , recursion ))  return  true  ;
+                if(dfs (Graph , visited  , neighbor , recursion ))  return  true  ;
             }else if ( recursion[neighbor]) return  true ;
         }
         return  false ;
@@ -38,7 +38,7 @@ public class cycleDEtectionInGraph {
         boolean visited[] = new boolean[V];
         for (int i = 0; i < V; i++) {
             if (!visited[i]) {
-                if (bfs(Graph, visited, i, new boolean[V])) return true;
+                if (dfs(Graph, visited, i, new boolean[V])) return true;
             }
         }
         return false;
